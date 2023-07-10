@@ -1,0 +1,42 @@
+{
+  "name": "@felipevelascohz/sqs",
+  "version": "1.0.10",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf sqs.* index.* && tsc",
+    "test": "jest",
+    "publish-package": "npm run build && npm publish && rm -rf sqs.* index.*"
+  },
+  "files": [
+    "sqs.*",
+    "index.*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/felipevelascohz/sqs.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "AWS",
+    "CDK",
+    "SQS"
+  ],
+  "author": "Felipe Velasco",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.2",
+    "jest": "^29.6.1",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.1.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^5.1.6"
+  },
+  "peerDependencies": {
+    "aws-cdk-lib": "^2.86.0",
+    "constructs": "^10.0.0"
+  }
+}
