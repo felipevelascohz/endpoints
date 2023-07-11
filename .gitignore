@@ -1,5 +1,6 @@
 node_modules/
 lib/
 cdk.out/
-./sqs.* 
+./endpoints.* 
 ./index.*
+cdk.context.json

@@ -1,15 +1,15 @@
 {
-  "name": "@felipevelascohz/sqs",
-  "version": "1.0.10",
+  "name": "@felipevelascohz/endpoints",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf sqs.* index.* && tsc",
+    "build": "rm -rf endpoints.* index.* && tsc",
     "test": "jest",
-    "publish-package": "npm run build && npm publish && rm -rf sqs.* index.*"
+    "publish-package": "npm run build && npm publish && rm -rf endpoints.* index.*"
   },
   "files": [
-    "sqs.*",
+    "endpoints.*",
     "index.*"
   ],
   "repository": {
@@ -22,7 +22,7 @@
   "keywords": [
     "AWS",
     "CDK",
-    "SQS"
+    "Endpoints"
   ],
   "author": "Felipe Velasco",
   "license": "ISC",
