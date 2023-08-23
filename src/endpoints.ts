@@ -5,6 +5,7 @@ import * as cdk from 'aws-cdk-lib';
 interface EndpointConfig {
     vpc: string | ec2.IVpc;
     service: string[];
+    az?: string[];
 }
 
 export class Endpoints extends cdk.Stack {
@@ -20,7 +21,11 @@ export class Endpoints extends cdk.Stack {
         } else {
             var vpc = config.vpc
         };
-        
+        const { az = [
+            process.env.CDK_DEFAULT_REGION + 'a', 
+            process.env.CDK_DEFAULT_REGION + 'b', 
+            process.env.CDK_DEFAULT_REGION + 'c'
+        ]} = config;
         const sg = new ec2.SecurityGroup(this, 'VpcEndpointsSG', {
             vpc,
             allowAllOutbound: false,
@@ -36,11 +41,7 @@ export class Endpoints extends cdk.Stack {
                 vpc,
                 service: new ec2.InterfaceVpcEndpointService('com.amazonaws.' + process.env.CDK_DEFAULT_REGION + '.' + config.service[i], 443),
                 subnets: {
-                    availabilityZones: [ 
-                        process.env.CDK_DEFAULT_REGION + 'a', 
-                        process.env.CDK_DEFAULT_REGION + 'b', 
-                        process.env.CDK_DEFAULT_REGION + 'c' 
-                    ]
+                    availabilityZones: az
                 },
                 privateDnsEnabled: true,
                 securityGroups: [sg]
